@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AuthLoginController::class, 'login'])->name('login');
+Route::post('actionlogin', [AuthLoginController::class, 'actionlogin'])->name('actionlogin');
+
+Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('actionlogout', [AuthLoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
