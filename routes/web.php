@@ -20,3 +20,7 @@ Route::post('actionlogin', [AuthLoginController::class, 'actionlogin'])->name('a
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('actionlogout', [AuthLoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
+Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
+Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+Route::post('/barang/store', [BarangController::class, 'store'])->name('barang.store');

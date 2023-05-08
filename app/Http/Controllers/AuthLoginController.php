@@ -24,7 +24,7 @@ class AuthLoginController extends Controller
             'password' => $request->input('password'),
         ];
 
-        if (Auth::Attempt($data)) {
+        if (Auth::attempt($data)) {
             return redirect('home');
         }else{
             Session::flash('error', 'Email atau Password Salah');
